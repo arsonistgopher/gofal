@@ -21,15 +21,8 @@ import (
 	"os"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/arsonistgopher/glog"
 	gf "github.com/arsonistgopher/gofal"
 )
-
-func checkerr(l glog.Logger, e error) {
-	if e != nil {
-		l.Error(e)
-	}
-}
 
 func main() {
 
@@ -50,48 +43,61 @@ func main() {
 		Contributors welcome!
 	*/
 
-	// De-coupled logging
-	logger := glog.Logger{Name: "fds"}
-	// Inject logrus
-	logger.LoggingBase = logrus.New()
-
-	logger.Info("--- Welcome to the FDS Demo ---")
+	logrus.Info("--- Welcome to the goFAL Demo ---")
 
 	// Create root node called 'build'
 	build, err := gf.BuildRoot("build", os.ModePerm)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Add a content directory called 'content' and set the permissions
 	content, err := gf.BuildNode(build, "content", os.ModePerm, gf.DIR)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Add a file under the build directory called 'content1' and set perms
 	file1, err := gf.BuildNode(build, "content1.txt", 0444, gf.FILE)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Add a file under the content directory called 'content2' and set perms
 	file2, err := gf.BuildNode(content, "content2.txt", 0444, gf.FILE)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Generate file tree on disk
 	err = gf.Generate(build)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Insert content
 	file1Content := []byte("Hello from ArsonistGopher once.")
 	file2Content := []byte("Hello from ArsonistGopher twice.")
 	err = gf.FileWrite(file1, file1Content)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 	err = gf.FileWrite(file2, file2Content)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Create hashes using the build root as an anchor
 	err = gf.BuildHashes(build)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Set permissions (post writing) as per tree data
 	err = gf.SetPerms(build)
-	checkerr(logger, err)
+	if err != nil {
+		logrus.Error(err)
+	}
 
 	// Uncomment line below to print build info
 	// fmt.Println(build.String())
