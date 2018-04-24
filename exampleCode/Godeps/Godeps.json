@@ -1,0 +1,32 @@
+{
+	"ImportPath": "github.com/arsonistgopher/gofal/exampleCode",
+	"GoVersion": "go1.10",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v1.0.5-16-g778f2e7",
+			"Rev": "778f2e774c725116edbc3d039dc0dfc1cc62aae8"
+		},
+		{
+			"ImportPath": "github.com/arsonistgopher/glog",
+			"Rev": "516057c84d1578382a8ae79a1599c0eccf294c5f"
+		},
+		{
+			"ImportPath": "github.com/arsonistgopher/gofal",
+			"Rev": "e74383e75e882274d0fa2f61ec0167802edb24af"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "650f4a345ab4e5b245a3034b110ebc7299e68186"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "b126b21c05a91c856b027c16779c12e3bf236954"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/windows",
+			"Rev": "b126b21c05a91c856b027c16779c12e3bf236954"
+		}
+	]
+}
