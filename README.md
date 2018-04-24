@@ -16,9 +16,17 @@ Once happy, run the `BuildHashes()` function, again using the root directory as 
 
 Other stages like `SetPerms()` will set the permissions to what you intend, else they remain at `0777` in octal which is basically a free for all.
 
-I'll add `BuildSigs()` soon allowing you to generate all of the sigs or partial, depending on how many files there are.
-
 __Example__
+
+Change directory to the exampleCode directory and install the dependencies.
+
+```bash
+go get github.com/arsonistgopher/gofal
+go get github.com/arsonistgopher/glog
+go get github.com/Sirupsen/logrus
+```
+
+I'm assuming you have a working Go install. If in doubt, use the latest stable.
 
 ```go
 /*
@@ -55,23 +63,6 @@ func checkerr(l glog.Logger, e error) {
 }
 
 func main() {
-
-	/*
-		Example of how to use the goFAL package.
-
-		goFAL builds a tree of file type instances. This tree is then used
-		to build a real file tree when the correct package functions are called.
-		Each file has both SHA1 and SHA256 hashes calculated for easy use.
-
-		This was created to make projects easier to build for packaging and scripting.
-
-		This is an alpha release at best and comes without support.
-
-		Author: David Gee
-		Copyright: David Gee
-		Date: 20th April 2018
-		Contributors welcome!
-	*/
 
 	// De-coupled logging
 	logger := glog.Logger{Name: "fds"}
