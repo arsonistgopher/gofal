@@ -21,9 +21,10 @@ __Example__
 Change directory to the exampleCode directory and install the dependencies.
 
 ```bash
-go get github.com/arsonistgopher/gofal
-go get github.com/arsonistgopher/glog
-go get github.com/Sirupsen/logrus
+cd exampleCode
+godep restore
+go build
+./exampleCode
 ```
 
 I'm assuming you have a working Go install. If in doubt, use the latest stable.
